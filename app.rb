@@ -17,6 +17,7 @@ class SpeechieAPI < Sinatra::Base
 
     set :telegram_token, ENV['TELEGRAM_TOKEN']
     set :bot_username, ENV['BOT_USERNAME']
+    set :google_speech_api_key, ENV['GOOGLE_SPEECH_API_KEY']
   end
 
   helpers do

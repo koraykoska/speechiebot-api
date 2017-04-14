@@ -10,3 +10,6 @@ SpeechieAPI.helpers CommandHelper
 
 require_relative 'telegram_helper'
 SpeechieAPI.helpers TelegramHelper
+
+require_relative 'speech_api_helper'
+SpeechieAPI.helpers SpeechApiHelper

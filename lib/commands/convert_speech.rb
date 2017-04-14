@@ -24,8 +24,10 @@ module Command
       # TODO: Error handling!
 
       file_id = voice['file_id']
-      file_json = JSON.parse(get_file(file_id: file_id))
-      file = download_file(path: file_json['result']['file_path'])
+      file_json = JSON.parse(@helpers.get_file(file_id: file_id))
+      file = @helpers.download_file(path: file_json['result']['file_path'])
+
+      puts(@helpers.get_text_from_speech(file))
     end
   end
 end
