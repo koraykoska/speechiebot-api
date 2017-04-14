@@ -62,6 +62,8 @@ module Command
                          reply_to_message_id: reply_to_message }
         @helpers.send_notification chat: chat_to_send
       end
+
+      @result = default_result(ok: true)
     end
   end
 end
