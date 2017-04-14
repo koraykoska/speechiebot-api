@@ -53,6 +53,6 @@ module SpeechApiHelper
     )
     request.run
 
-    request.response.code
+    JSON.parse(request.response.body)
   end
 end
