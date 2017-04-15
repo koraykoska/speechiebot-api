@@ -23,9 +23,13 @@ module Command
       end
       voice = reply['voice']
       if voice.nil?
-        # TODO: Send no voice reply notification
+        text_to_send = 'Please reply to a voice message!'
+        chat_to_send = { chat_id: chat_id, text: text_to_send }
+        ok = @helpers.send_notification chat: chat_to_send
 
-        @result = default_result(ok: false)
+        @result = default_result(ok: ok)
+
+        # @result = default_result(ok: false)
         return
       end
 
