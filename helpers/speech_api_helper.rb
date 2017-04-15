@@ -3,7 +3,7 @@
 # Helpers for the Google speech API
 module SpeechApiHelper
   # rubocop:disable MethodLength, Metrics/AbcSize
-  def get_text_from_speech(bytes)
+  def get_text_from_speech(bytes, language_code: nil)
     return nil if bytes.nil?
 
     temp = Dir.tmpdir.to_s
@@ -27,6 +27,7 @@ module SpeechApiHelper
     request_config = {}
     request_config[:encoding] = 'FLAC'
     request_config[:sampleRate] = 16_000
+    request_config[:languageCode] = language_code unless language_code.nil?
 
     request[:config] = request_config
 

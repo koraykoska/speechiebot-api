@@ -28,7 +28,9 @@ module Command
       file_json = JSON.parse(@helpers.get_file(file_id: file_id))
       file = @helpers.download_file(path: file_json['result']['file_path'])
 
-      speech_response = @helpers.get_text_from_speech(file)
+      language = @helpers.read_language(chat_id: chat_id)
+      speech_response = @helpers.get_text_from_speech(file,
+                                                      language_code: language)
       results = speech_response['results']
       if results.nil? || results.empty?
         # TODO: Send no assumption notification

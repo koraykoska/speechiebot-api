@@ -6,8 +6,6 @@ class SpeechieAPI < Sinatra::Base
     request.body.rewind
     payload_body = request.body.read
 
-    puts payload_body
-
     unless valid_json?(payload_body)
       return halt teapot_code, json_content_type_header,
                   teapot_json

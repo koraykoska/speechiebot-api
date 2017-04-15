@@ -13,3 +13,9 @@ SpeechieAPI.helpers TelegramHelper
 
 require_relative 'speech_api_helper'
 SpeechieAPI.helpers SpeechApiHelper
+
+require_relative 'context_helper'
+SpeechieAPI.helpers ContextHelper
+
+require_relative 'language_helper'
+SpeechieAPI.helpers LanguageHelper

@@ -11,6 +11,13 @@ module Command
       text == @command || text == (@command + bot_name)
     end
 
+    # Returns true iff text equals the context for this command
+    def self.context?(text)
+      false
+    end
+
+    attr_accessor :context
+
     attr_reader :result
 
     def initialize(json:, helpers:)
@@ -18,7 +25,14 @@ module Command
       @helpers = helpers
     end
 
+    # If @context is set to true and self.context is implemented,
+    # `run` should call `context_run` and do nothing else
     def run; end
+
+    # Should be implemented if self.context? is implemented
+    # If @context is set to true and self.context is implemented,
+    # `run` should call `context_run` and do nothing else
+    def context_run; end
 
     def default_result(ok:)
       { command: self.class.command, ok: ok }
