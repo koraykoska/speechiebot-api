@@ -3,6 +3,11 @@ module Command
   class ConvertSpeech < Base
     @command = '/convertspeech'
 
+    def self.can_answer?(json:, bot_name: '')
+      is_voice = !json['message']['voice'].nil?
+      !command?(json['message']['text'], bot_name: bot_name) && is_voice
+    end
+
     def run
       chat = @json['message']['chat']
       chat_id = chat['id']
@@ -54,7 +59,11 @@ module Command
       reply_to_message = @json['message']['message_id']
       chat_to_send = { chat_id: chat_id, text: message,
                        reply_to_message_id: reply_to_message }
-      @helpers.send_notification chat: chat_to_send
+      # TODO: We need a configuration for that
+      bot = @helpers.settings.bot_username
+      unless self.class.can_answer?(json: json, bot_name: bot)
+        @helpers.send_notification chat: chat_to_send
+      end
 
       message = "I have #{results[0]['alternatives'].size} assumptions."
       chat_to_send = { chat_id: chat_id, text: message }
@@ -67,7 +76,12 @@ module Command
         confidence = a['confidence']
 
         message = "#{transcript} (Confidence: #{confidence})"
-        reply_to_message = @json['message']['reply_to_message']['message_id']
+        reply_to_message = nil
+        if !@json['message']['reply_to_message'].nil?
+          reply_to_message = @json['message']['reply_to_message']['message_id']
+        else
+          reply_to_message = @json['message']['message_id']
+        end
         chat_to_send = { chat_id: chat_id, text: message,
                          reply_to_message_id: reply_to_message }
         @helpers.send_notification chat: chat_to_send

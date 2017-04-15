@@ -11,6 +11,8 @@ module CommandHelper
     commands.each do |c|
       if c.command?(command, bot_name: settings.bot_username)
         correct_commands << c.new(json: json, helpers: self)
+      elsif c.can_answer?(json: json, bot_name: settings.bot_username)
+        correct_commands << c.new(json: json, helpers: self)
       end
     end
 

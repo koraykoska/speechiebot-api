@@ -16,6 +16,12 @@ module Command
       false
     end
 
+    # Returns true if the message is not a command but this command can
+    # answer it nevertheless
+    def self.can_answer?(json:, bot_name: '')
+      false
+    end
+
     attr_accessor :context
 
     attr_reader :result
