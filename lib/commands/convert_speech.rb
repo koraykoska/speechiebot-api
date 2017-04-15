@@ -31,6 +31,7 @@ module Command
       language = @helpers.read_language(chat_id: chat_id)
       speech_response = @helpers.get_text_from_speech(file,
                                                       language_code: language)
+      puts speech_response
       results = speech_response['results']
       if results.nil? || results.empty?
         # TODO: Send no assumption notification
