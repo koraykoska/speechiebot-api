@@ -13,6 +13,8 @@ module Command
       chat_id = chat['id']
 
       reply = @json['message']['reply_to_message']
+      # TODO: Make this nicer
+      reply = @json['message'] if reply.nil?
       if reply.nil?
         # TODO: Send failure notification
 
