@@ -19,7 +19,10 @@ module CommandHelper
     end
 
     # Get context, if any and set context commands
-    context = read_context(chat_id: json['message']['chat']['id'])
+    chat_id = json['message']
+    chat_id = chat_id['chat'] unless chat_id.nil?
+    chat_id = chat_id['id'] unless chat_id.nil?
+    context = read_context(chat_id: chat_id)
     unless context.nil?
       commands.each do |c|
         next unless c.context?(context)
