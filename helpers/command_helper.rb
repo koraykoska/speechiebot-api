@@ -4,15 +4,17 @@
 module CommandHelper
   def get_commands(json:)
     commands = [Command::Start, Command::ConvertSpeech, Command::ChangeLang]
-
-    command = json['message']['text']
-
     correct_commands = []
-    commands.each do |c|
-      if c.command?(command, bot_name: settings.bot_username)
-        correct_commands << c.new(json: json, helpers: self)
-      elsif c.can_answer?(json: json, bot_name: settings.bot_username)
-        correct_commands << c.new(json: json, helpers: self)
+
+    command = json['message']
+    command = command['text'] unless command.nil?
+    unless command.nil?
+      commands.each do |c|
+        if c.command?(command, bot_name: settings.bot_username)
+          correct_commands << c.new(json: json, helpers: self)
+        elsif c.can_answer?(json: json, bot_name: settings.bot_username)
+          correct_commands << c.new(json: json, helpers: self)
+        end
       end
     end
 
