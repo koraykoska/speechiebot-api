@@ -26,7 +26,7 @@ module SpeechApiHelper
 
     request_config = {}
     request_config[:encoding] = 'FLAC'
-    request_config[:sampleRate] = 16_000
+    # request_config[:sampleRate] = 16_000
     request_config[:languageCode] = language_code unless language_code.nil?
 
     request[:config] = request_config
