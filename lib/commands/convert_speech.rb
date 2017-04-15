@@ -23,7 +23,7 @@ module Command
       end
       voice = reply['voice']
       if voice.nil?
-        text_to_send = 'Please reply to a voice message!'
+        text_to_send = 'Please reply to a voice message with this command!'
         chat_to_send = { chat_id: chat_id, text: text_to_send }
         ok = @helpers.send_notification chat: chat_to_send
 
