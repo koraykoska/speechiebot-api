@@ -16,7 +16,7 @@ module Command
       chat = @json['message']['chat']
       chat_id = chat['id']
 
-      text_to_send = 'Pls press one of the buttons to set a default language'\
+      text_to_send = 'Pls press one of the buttons to set a default language '\
                      'for your voice messages.'
 
       # Set up language buttons
