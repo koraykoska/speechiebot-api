@@ -63,7 +63,7 @@ module Command
                        reply_to_message_id: reply_to_message }
       # TODO: We need a configuration for that
       bot = @helpers.settings.bot_username
-      unless self.class.can_answer?(json: json, bot_name: bot)
+      unless self.class.can_answer?(json: @json, bot_name: bot)
         @helpers.send_notification chat: chat_to_send
       end
 
