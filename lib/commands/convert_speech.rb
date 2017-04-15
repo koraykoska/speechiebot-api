@@ -34,8 +34,15 @@ module Command
       results = speech_response['results']
       if results.nil? || results.empty?
         # TODO: Send no assumption notification
+        text_to_send = 'Huh!? Is this a sound file? '\
+                       'I don\'t have an assumption for that.'
+        reply_to_message = @json['message']['reply_to_message']['message_id']
+        chat_to_send = { chat_id: chat_id, text: text_to_send,
+                         reply_to_message_id: reply_to_message }
+        ok = @helpers.send_notification chat: chat_to_send
+        @result = default_result(ok: ok)
 
-        @result = default_result(ok: false)
+        # @result = default_result(ok: false)
         return
       end
 
