@@ -7,7 +7,7 @@ module Command
       message = json['message']
       is_voice = false
       is_voice = !json['message']['voice'].nil? unless message.nil?
-      !command?(json['message']['text'], bot_name: bot_name) && is_voice
+      is_voice && !command?(json['message']['text'], bot_name: bot_name)
     end
 
     def run
