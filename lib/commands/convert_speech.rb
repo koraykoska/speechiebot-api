@@ -67,9 +67,8 @@ module Command
       end
 
       # Send default messages
-      message = 'Oh man I think I spider! The 1 Larry just sent you a voice '\
-                'message instead of a naice text message. Here comes the 1 '\
-                'translation to rule them all...'
+      message = 'Someone sent a voice message instead of a nice '\
+                'text message. Translating it here for you...'
       reply_to_message = @json['message']['message_id']
       chat_to_send = { chat_id: chat_id, text: message,
                        reply_to_message_id: reply_to_message }
