@@ -24,4 +24,4 @@ RUN apt-get -y remove build-essential
 RUN apt-get -y autoremove
 
 # run server
-CMD ["bundle", "exec", "rackup", "--port", "80"]
+CMD ["bundle", "exec", "puma", "config.ru", "--port", "80"]

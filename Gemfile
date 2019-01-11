@@ -8,6 +8,8 @@ gem 'sinatra'
 gem 'typhoeus'
 gem 'uuidtools'
 
+gem 'puma'
+
 group :test do
   gem 'rake'
   gem 'rspec'

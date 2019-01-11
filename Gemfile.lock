@@ -162,6 +162,7 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)
+    puma (3.12.0)
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
@@ -212,6 +213,7 @@ DEPENDENCIES
   fog
   json
   mime-types
+  puma
   rake
   rspec
   rubocop
@@ -220,4 +222,4 @@ DEPENDENCIES
   uuidtools
 
 BUNDLED WITH
-   1.13.7
+   1.14.6
