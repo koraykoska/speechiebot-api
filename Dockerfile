@@ -3,7 +3,7 @@ FROM ruby:2.3.8-slim-jessie
 
 # system dependencies
 RUN apt-get -y update
-RUN apt-get -y install flac sox libsox-fmt-base
+RUN apt-get -y install flac sox libsox-fmt-base opus-tools
 RUN apt-get -y install curl
 
 # build only Dependencies
