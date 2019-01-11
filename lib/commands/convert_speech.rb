@@ -78,7 +78,8 @@ module Command
         @helpers.send_notification chat: chat_to_send
       end
 
-      message = "I have #{results[0]['alternatives'].size} assumptions."
+      singplur = results[0]['alternatives'].size == 1 ? 'assumption' : 'assumptions'
+      message = "I have #{results[0]['alternatives'].size} #{singplur}."
       chat_to_send = { chat_id: chat_id, text: message }
       @helpers.send_notification chat: chat_to_send
 
